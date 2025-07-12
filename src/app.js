@@ -1,4 +1,4 @@
-const API_BASE = "https://cors-anywhere.herokuapp.com/https://borjomi.loremipsum.ge/api";
+const API_BASE = "https://borjomi.loremipsum.ge/api";
 
 const createUserUrl = `${API_BASE}/register`;
 const getAllUsersUrl = `${API_BASE}/all-users`;
@@ -20,6 +20,30 @@ const userEmail = document.querySelector("#user-email");
 const userPhone = document.querySelector("#user-phone");
 const userPersonalID = document.querySelector("#user-personal-id");
 const userZip = document.querySelector("#user-zip-code");
+
+const deleteAllUsersBtn = document.querySelector("#delete-all-users");
+
+deleteAllUsersBtn.addEventListener("click", () => {
+    deleteAllUsersOneByOne();
+});
+
+async function deleteAllUsersOneByOne() {
+    try {
+        const response = await fetch(getAllUsersUrl);
+        const data = await response.json();
+        const users = data.users;
+
+        for (const user of users) {
+            await fetch(${deleteUserUrl}${user.id}, { method: "DELETE" });
+            console.log(Deleted user ${user.id});
+            await new Promise((resolve) => setTimeout(resolve, 500));
+        }
+
+        getUsers();
+    } catch (e) {
+        console.log("Error deleting all users:", e);
+    }
+}
 
 addNewUserBtn.addEventListener("click", () => {
     dialogEl.showModal();
@@ -119,5 +143,7 @@ function updateUser(userObj) {
             getUsers();
         });
 }
+
+
 
 getUsers();
