@@ -34,8 +34,8 @@ async function deleteAllUsersOneByOne() {
         const users = data.users;
 
         for (const user of users) {
-            await fetch(${deleteUserUrl}${user.id}, { method: "DELETE" });
-            console.log(Deleted user ${user.id});
+            await fetch(`${deleteUserUrl}${user.id}`, { method: "DELETE" });
+            console.log(`Deleted user ${user.id}`);
             await new Promise((resolve) => setTimeout(resolve, 500));
         }
 
