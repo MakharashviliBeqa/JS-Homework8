@@ -51,6 +51,13 @@ function getCharacters1() {
 
 function userActions() {
     const deleteButton = document.querySelectorAll(".delete-btn");
+
+    deleteButton.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const userId = btn.dataset.id;
+            deleteUser(userId);
+        })
+    })
     // 1. ცხრილში ღილაკებზე უნდა მიამაგროთ event listener-ები
     // 2. იქნება 2 ღილაკი რედაქტირება და წაშლა როგორც "ცხრილი.png" ში ჩანს
     // 3. id შეგიძლიათ შეინახოთ data-user-id ატრიბუტად ღილაკებზე, data ატრიბუტებზე წვდომა შეგიძლიათ dataset-ის გამოყენებით მაგ:selectedElement.dataset
