@@ -6,103 +6,39 @@
 </head>
 <body>
 <section class="container registration-form">
-    <button id="add-new-user">add new user</button>
+    <button id="add-new-user">Add New User</button>
+
+    <!-- Registration form inside a dialog -->
     <dialog>
-        <button id="close">X</button>
-        <form id="registration-form" action="#" method="#">
-            <input id="user-id" type="hidden" placeholder="" value="" />
-            <div class="form-group">
-                <label for="user-name">Enter User Name</label>
-                <input
-                        type="text"
-                        data-category="user_name"
-                        id="user-name"
-                        placeholder="user name"
-                        required
-                />
-            </div>
-            <div class="form-group">
-                <label for="user-surname">Enter User Surname</label>
-                <input
-                        type="text"
-                        id="user-surname"
-                        placeholder="user surname"
-                        required
-                />
-            </div>
+        <form id="registration-form">
+            <input type="hidden" id="user-id" />
 
-            <div class="form-group">
-                <label for="user-phone">Enter phone number</label>
-                <input
-                        type="tel"
-                        id="user-phone"
-                        placeholder="phone number"
-                        required
-                />
-            </div>
+            <label for="user-name">First Name:</label><br />
+            <input type="text" id="user-name" name="user-name" required /><br /><br />
 
-            <div class="form-group">
-                <label for="user-personal-id">Enter personal id</label>
-                <input
-                        type="number"
-                        id="user-personal-id"
-                        placeholder="personal id"
-                        required
-                />
-            </div>
+            <label for="user-surname">Last Name:</label><br />
+            <input type="text" id="user-surname" name="user-surname" required /><br /><br />
 
-            <div class="form-group">
-                <label for="user-email">Enter Email</label>
-                <input type="email" id="user-email" placeholder="email" required />
-            </div>
+            <label for="user-email">Email:</label><br />
+            <input type="email" id="user-email" name="user-email" required /><br /><br />
 
-            <div class="form-group">
-                <label for="user-zip-code">Enter zip code</label>
-                <input
-                        type="text"
-                        id="user-zip-code"
-                        placeholder="zip code"
-                        required
-                />
-            </div>
+            <label for="user-phone">Phone:</label><br />
+            <input type="tel" id="user-phone" name="user-phone" required /><br /><br />
 
-            <div class="form-group">
-                <label for="">Select Gender</label>
-                <label for="male"
-                ><input
-                        type="radio"
-                        id="male"
-                        value="male"
-                        name="gender"
-                        required
-                />
-                    Male</label
-                >
-                <label for="female"
-                ><input
-                        type="radio"
-                        id="female"
-                        value="female"
-                        name="gender"
-                        required
-                />
-                    Female</label
-                >
-                <label for="other"
-                ><input
-                        type="radio"
-                        id="other"
-                        value="other"
-                        name="gender"
-                        required
-                />
-                    Other</label
-                >
-            </div>
+            <label for="user-personal-id">Personal ID:</label><br />
+            <input type="text" id="user-personal-id" name="user-personal-id" required /><br /><br />
 
-            <div class="form-group">
-                <button class="btn" type="submit">Submit</button>
-            </div>
+            <label for="user-zip-code">Zip Code:</label><br />
+            <input type="text" id="user-zip-code" name="user-zip-code" required /><br /><br />
+
+            <label>Gender:</label><br />
+            <input type="radio" id="gender-male" name="gender" value="male" checked />
+            <label for="gender-male">Male</label><br />
+            <input type="radio" id="gender-female" name="gender" value="female" />
+            <label for="gender-female">Female</label><br /><br />
+
+            <button type="submit">Submit</button>
+            <button type="button" id="close">Close</button>
         </form>
     </dialog>
 
@@ -110,7 +46,23 @@
             src="https://fastly.picsum.photos/id/106/200/300.jpg?hmac=qnjqfh7hXrQF9MAA1T3JOgK3dhnLfxOo-HkzhyZoB2g"
             alt=""
     />
+
+    <button id="generate-random-user" type="button">Generate Random User</button>
 </section>
+
+<div>
+    <h2>Users List</h2>
+    <table border="1" id="users-table">
+        <thead>
+        <tr>
+            <th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th>ID Number</th><th>Gender</th><th>Zip Code</th>
+        </tr>
+        </thead>
+        <tbody id="users-tbody">
+        <!-- Users will appear here -->
+        </tbody>
+    </table>
+</div>
 
 <script src="src/app.js"></script>
 </body>
